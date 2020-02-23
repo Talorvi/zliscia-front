@@ -3,3 +3,40 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.bookman{
+    font-family: 'Bookman Old Style', arial;
+}
+
+.h-half {
+    height: 70vh;
+}
+
+.h-half-height{
+    height: 50%;
+}
+
+.text-shadow-white {
+    /*text-shadow: 1px 1px rgba(255, 255, 255, 0.5);*/
+    /*filter: blur(3px);*/
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #F0FFF4;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #68D391;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #2F855A;
+}
