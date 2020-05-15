@@ -2,7 +2,7 @@
   <div>
     <div
       class="about min-h-screen h-full pt-20 lg:pt-26 xl:pt-24"
-      style="margin-bottom: -56px; padding-bottom: 56px"
+      style="margin-bottom: -65px; padding-bottom: 65px; min-height: 100vh"
     >
       <div class="pl-4 pr-4 xl:pl-64 xl:pr-64 pt-8 pb-4">
         <h1 class="text-3xl mb-4 ml-10 uppercase">Kontakt</h1>
@@ -77,34 +77,124 @@
           <div class="flex flex-col h-full">
             <div class="px-6 py-4 flex-1">
               <p class="pb-2">
-                <span class="font-light">E-mail:</span>
+                <label for="email" class="font-light">E-mail:</label>
                 <input
+                  id="email"
+                  v-model="email"
                   class="bg-white focus:outline-none border border-gray-400 focus:border-green-600 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
                   type="email"
                   placeholder="E-mail"
+                  :disabled="disabled"
                 />
+                <label
+                  for="email"
+                  class="font-light text-red-500 text-xs"
+                  v-if="errors.from"
+                  >{{ errors.from[0] }}</label
+                >
               </p>
               <p class="pb-2">
-                <span class="font-light">Temat:</span>
+                <label for="topic" class="font-light">Temat:</label>
                 <input
+                  id="topic"
+                  v-model="topic"
                   class="bg-white focus:outline-none border border-gray-400 focus:border-green-600 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
                   type="email"
                   placeholder="Temat"
+                  :disabled="disabled"
                 />
+                <label
+                  for="topic"
+                  class="font-light text-red-500 text-xs"
+                  v-if="errors.topic"
+                  >{{ errors.topic[0] }}</label
+                >
               </p>
               <p class="pb-2">
-                <span class="font-light">Treść:</span>
+                <label for="text" class="font-light">Treść:</label>
                 <textarea
+                  v-model="text"
+                  id="text"
                   class="bg-white focus:outline-none border border-gray-400 focus:border-green-600 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
                   type="email"
                   placeholder="Treść"
+                  :disabled="disabled"
                 ></textarea>
+                <label
+                  for="text"
+                  class="font-light text-red-500 text-xs"
+                  v-if="errors.text"
+                  >{{ errors.text[0] }}</label
+                >
               </p>
               <p class="mt-6 pb-2 text-center">
-                <a
-                  href="#"
-                  class="inline-block text-center bookman w-56 bg-green-700 text-xl px-4 py-4 leading-none border rounded text-white border-white hover:border-green-700 hover:text-green-700 hover:bg-white ml-auto mr-auto"
-                  >Wyślij zapytanie</a
+                <button
+                  id="btn"
+                  v-if="!disabled"
+                  @click="sendEmail"
+                  class="inline-block btnanim text-center bookman w-56 bg-green-700 text-xl px-4 py-4 leading-none border rounded text-white border-white hover:border-green-700 hover:text-green-700 hover:bg-white ml-auto mr-auto"
+                >
+                  Wyślij zapytanie
+                </button>
+                <button
+                  disabled
+                  v-if="disabled"
+                  @click="sendEmail"
+                  class="inline-block btnanim text-center bookman w-56 bg-green-200 text-xl px-4 py-4 leading-none border rounded text-white border-white ml-auto mr-auto cursor-not-allowed"
+                >
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    class="w-4 h-4 ml-auto mr-auto fill-current text-green-700 spin"
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 469.333 469.333"
+                    style="enable-background:new 0 0 469.333 469.333;"
+                    xml:space="preserve"
+                  >
+                    <g>
+                      <g>
+                        <path
+                          d="M468.523,6.592C466.88,2.603,462.976,0,458.667,0C44.694,0,0,171.563,0,245.333c0,26.539,5.888,51.328,17.515,73.664
+			c1.792,3.456,5.333,5.653,9.216,5.739c3.669-0.107,7.531-1.941,9.472-5.333C64.15,271.104,143.296,151.893,274.006,88.555
+			c5.355-2.56,11.755-0.363,14.293,4.907c2.56,5.312,0.341,11.712-4.949,14.272c-9.856,4.779-19.328,9.984-28.608,15.381
+			c-3.541,2.069-6.976,4.267-10.453,6.421c-5.227,3.243-10.389,6.549-15.424,9.963c-5.013,3.371-9.963,6.827-14.827,10.368
+			c-1.515,1.109-2.965,2.24-4.459,3.371C79.488,250.176,0,404.821,0,458.667c0,5.888,4.779,10.667,10.667,10.667
+			s10.667-4.779,10.667-10.667c0-17.195,11.712-52.053,33.877-93.632c32.171,26.304,75.456,40.299,126.123,40.299
+			c136.981,0,165.675-130.347,181.077-200.384c20.736-94.251,66.368-149.312,103.787-186.752
+			C469.27,15.147,470.166,10.581,468.523,6.592z"
+                        />
+                      </g>
+                    </g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                  </svg></button
+                ><br />
+                <label
+                  for="btn"
+                  class="text-green-700 text-lg"
+                  v-if="message"
+                  >{{ message }}</label
+                >
+                <label
+                  for="btn"
+                  class="text-red-500 text-lg"
+                  v-if="errors.server"
+                  >{{ errors.server }}</label
                 >
               </p>
               <div class="font-light pt-4 text-center w-full">
@@ -131,6 +221,72 @@
 import Footer from "../components/Footer";
 export default {
   name: "Contact",
-  components: { Footer }
+  data() {
+    return {
+      email: "",
+      topic: "",
+      text: "",
+      disabled: false,
+      errors: {
+        text: undefined,
+        from: undefined,
+        subject: undefined,
+        server: undefined
+      },
+      message: undefined
+    };
+  },
+  components: { Footer },
+  methods: {
+    sendEmail() {
+      this.disabled = true;
+
+      this.axios
+        .post("http://lisc.test/api/form/contact", {
+          from: this.email,
+          topic: this.topic,
+          text: this.text,
+          server: this.server
+        })
+        // eslint-disable-next-line no-unused-vars
+        .then(response => {
+          this.email = "";
+          this.topic = "";
+          this.text = "";
+          this.errors = {
+            text: undefined,
+            from: undefined,
+            subject: undefined,
+            server: undefined
+          };
+          this.message = response.data.data.message;
+        })
+        // eslint-disable-next-line no-unused-vars
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        })
+        .finally(() => {
+          this.disabled = false;
+        });
+    }
+  }
 };
 </script>
+
+<style scoped>
+@keyframes spin {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+.spin {
+  animation: spin 2s ease-in-out infinite;
+}
+
+.btnanim {
+  animation: ease-out;
+}
+</style>

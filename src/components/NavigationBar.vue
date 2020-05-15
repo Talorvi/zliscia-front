@@ -1,6 +1,7 @@
 <template>
   <div>
     <nav
+      id="navbar"
       class="flex items-center justify-between flex-wrap bg-green-700 p-6 fixed w-full bookman"
       style="z-index: 999;"
     >
@@ -31,35 +32,30 @@
         </button>
       </div>
       <div
+        v-if="!loggedIn"
         id="nav-content"
         class="w-full block flex-grow xl:flex xl:items-center xl:w-auto xl:mr-64 uppercase lg:block"
         v-bind:class="{ hidden: isHidden }"
       >
         <div class="lg:flex-grow lg:text-right">
           <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8"
+            @click="toReservation"
+            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8 cursor-pointer"
           >
-            Rezerwacje
+            Rezerwacja
           </a>
-          <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8"
-          >
-            Galeria
-          </a>
-          <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8"
-          >
-            Aktualności
-          </a>
-          <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8"
-          >
-            Escape Room
-          </a>
+          <!--          <a-->
+          <!--            href="#responsive-header"-->
+          <!--            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8"-->
+          <!--          >-->
+          <!--            Galeria-->
+          <!--          </a>-->
+          <!--          <a-->
+          <!--            href="#responsive-header"-->
+          <!--            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8"-->
+          <!--          >-->
+          <!--            Aktualności-->
+          <!--          </a>-->
           <a
             @click="toContact"
             class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8 cursor-pointer"
@@ -67,9 +63,40 @@
             Kontakt
           </a>
           <a
-            href="#"
-            class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-700 hover:bg-white mt-4 lg:mt-0"
+            @click="toLogin"
+            class="inline-block cursor-pointer text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-700 hover:bg-white mt-4 lg:mt-0"
             >Logowanie</a
+          >
+        </div>
+      </div>
+      <div
+        v-else
+        id="nav-content"
+        class="w-full block flex-grow xl:flex xl:items-center xl:w-auto xl:mr-64 uppercase lg:block"
+        v-bind:class="{ hidden: isHidden }"
+      >
+        <div class="lg:flex-grow lg:text-right">
+          <a
+            v-if="
+              this.roles !== undefined &&
+                (this.roles.includes('owner') ||
+                  this.roles.includes('webmaster'))
+            "
+            @click="toWorkers"
+            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8 cursor-pointer"
+          >
+            Pracownicy
+          </a>
+          <a
+            @click="toPanel"
+            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8 cursor-pointer"
+          >
+            Panel
+          </a>
+          <a
+            @click="logout"
+            class="inline-block cursor-pointer text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-700 hover:bg-white mt-4 lg:mt-0"
+            >Wyloguj</a
           >
         </div>
       </div>
@@ -78,11 +105,26 @@
 </template>
 
 <script>
+import { EventBus } from "./EventBus";
+import Swal from "sweetalert2";
 export default {
   name: "NavigationBar",
   data() {
     return {
-      isHidden: true
+      isHidden: true,
+      loggedIn: false,
+      roles: undefined,
+      toast: Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+        onOpen: toast => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        }
+      })
     };
   },
   methods: {
@@ -95,7 +137,70 @@ export default {
     toContact() {
       this.$router.push("/kontakt", () => {});
       this.isHidden = true;
+    },
+    toReservation() {
+      this.$router.push("/rezerwacja", () => {});
+      this.isHidden = true;
+    },
+    toLogin() {
+      this.$router.push("/logowanie", () => {});
+      this.isHidden = true;
+    },
+    toPanel() {
+      this.$router.push("/kalendarz", () => {});
+      this.isHidden = true;
+    },
+    logout() {
+      this.$router.push("/", () => {});
+      this.$axios
+        .get("http://lisc.test/api/auth/logout", {
+          headers: { Authorization: "Bearer " + this.$cookies.get("token") }
+        })
+        .then(() => {
+          this.$cookies.remove("token");
+          this.$cookies.remove("token-valid-until");
+          this.$cookies.remove("roles");
+          EventBus.$emit("login-update");
+        });
+      this.isHidden = true;
+      this.toast.fire({
+        icon: "success",
+        title: "Nastąpiło poprawne wylogowanie się z serwisu"
+      });
+    },
+    toWorkers() {
+      this.$router.push("/pracownicy", () => {});
+      this.isHidden = true;
     }
+  },
+  mounted() {
+    this.loggedIn = this.$cookies.isKey("token");
+    EventBus.$on("login-update", () => {
+      this.loggedIn = this.$cookies.isKey("token");
+
+      if (this.loggedIn) {
+        this.roles = this.$cookies.get("roles").split(",");
+      } else {
+        this.roles = undefined;
+      }
+    });
+
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-100px";
+      }
+      prevScrollpos = currentScrollPos;
+    };
   }
 };
 </script>
+
+<style scoped>
+#navbar {
+  transition: top 0.3s;
+}
+</style>

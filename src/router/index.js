@@ -20,6 +20,35 @@ const routes = [
     path: "/kontakt",
     name: "Contacts",
     component: () => import("../views/Contact.vue")
+  },
+  {
+    path: "/rezerwacja",
+    name: "Reservation",
+    component: () => import("../views/Reservation.vue")
+  },
+  {
+    path: "/potwierdzenie",
+    name: "Confirmation",
+    component: () => import("../views/Confirmation.vue"),
+    props: route => ({ id: route.query.id, code: route.query.code })
+    // props(route) {
+    //   return route.query || {};
+    // }
+  },
+  {
+    path: "/kalendarz",
+    name: "Calendar,",
+    component: () => import("../views/ReservationCalendar.vue")
+  },
+  {
+    path: "/logowanie",
+    name: "Login",
+    component: () => import("../views/Login.vue")
+  },
+  {
+    path: "/pracownicy",
+    name: "Workers",
+    component: () => import("../views/Workers.vue")
   }
 ];
 

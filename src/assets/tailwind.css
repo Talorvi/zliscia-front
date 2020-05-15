@@ -21,22 +21,27 @@
     /*filter: blur(3px);*/
 }
 
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
+/*!* width *!*/
+/*::-webkit-scrollbar {*/
+/*    width: 6px;*/
+/*}*/
 
-/* Track */
-::-webkit-scrollbar-track {
-    background: #F0FFF4;
-}
+/*!* Track *!*/
+/*::-webkit-scrollbar-track {*/
+/*    background: #F0FFF4;*/
+/*}*/
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #68D391;
-}
+/*!* Handle *!*/
+/*::-webkit-scrollbar-thumb {*/
+/*    !*background-image: -webkit-gradient(linear,*!*/
+/*    !*40% 0%,*!*/
+/*    !*75% 84%,*!*/
+/*    !*from(#3cae76),*!*/
+/*    !*to(#4ee9a0));*!*/
+/*    background: #48BB78;*/
+/*}*/
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #2F855A;
-}
+/*!* Handle on hover *!*/
+/*::-webkit-scrollbar-thumb:hover {*/
+/*    background: #2F855A;*/
+/*}*/

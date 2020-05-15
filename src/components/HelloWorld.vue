@@ -366,18 +366,19 @@
           class="self-stretch text-center mb-8 sm:mb-0 pt-24"
           style="z-index: 4;"
         >
-          <a
-            href="#"
+          <button
+            @click="toReservation"
             class="inline-block text-center bookman w-56 bg-green-700 text-xl px-4 py-4 leading-none border rounded text-white border-white hover:border-green-700 hover:text-green-700 hover:bg-white ml-auto mr-auto transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
-            >Zarezerwuj teraz</a
           >
+            Zarezerwuj teraz
+          </button>
         </div>
       </div>
     </div>
     <div class="pl-4 pr-4 xl:pl-64 xl:pr-64 pt-8 pb-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-8 row-gap-4">
         <div
-          class="text-gray-700 bg-white px-4 py-2 border-gray-600 shadow-2xl rounded"
+          class="text-gray-700 bg-white px-4 py-2 border-gray-600 shadow-md rounded"
         >
           <div class="flex flex-col h-full">
             <div class="px-6 py-4 flex-1">
@@ -410,7 +411,7 @@
             </div>
           </div>
         </div>
-        <div class="text-gray-700 bg-white px-4 py-2 shadow-2xl rounded flex">
+        <div class="text-gray-700 bg-white px-4 py-2 shadow-md rounded flex">
           <div class="flex flex-col h-full">
             <div class="px-6 py-4 flex-1">
               <div class="font-bold text-xl mb-4">
@@ -444,6 +445,11 @@
 import Footer from "./Footer";
 export default {
   name: "HelloWorld",
-  components: { Footer }
+  components: { Footer },
+  methods: {
+    toReservation() {
+      this.$router.push("/rezerwacja", () => {});
+    }
+  }
 };
 </script>

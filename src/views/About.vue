@@ -2,7 +2,7 @@
   <div>
     <div
       class="about min-h-screen h-full pt-20 lg:pt-26 xl:pt-24"
-      style="margin-bottom: -56px; padding-bottom: 56px"
+      style="margin-bottom: -65px; padding-bottom: 65px; min-height: 100vh"
     >
       <div class="pl-4 pr-4 xl:pl-64 xl:pr-64 pt-8 pb-4">
         <h1 class="text-3xl mb-4 ml-10 uppercase">Polityka prywatności</h1>
