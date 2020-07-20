@@ -140,7 +140,7 @@ export default {
       };
 
       this.axios
-        .post("http://lisc.test/api/auth/login", {
+        .post("https://lisc.polarlooptheory.pl/api/auth/login", {
           email: this.email,
           password: this.password
         })

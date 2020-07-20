@@ -242,7 +242,7 @@ export default {
       this.disabled = true;
 
       this.axios
-        .post("http://lisc.test/api/form/contact", {
+        .post("https://www.lisc.polarlooptheory.pl/api/form/contact", {
           from: this.email,
           topic: this.topic,
           text: this.text,

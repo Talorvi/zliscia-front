@@ -98,7 +98,7 @@ export default {
           preConfirm: () => {
             return this.axios
               .post(
-                "http://lisc.test/api/panel/cancel-reservation",
+                "https://www.lisc.polarlooptheory.pl/api/panel/cancel-reservation",
                 {
                   id: id
                 },

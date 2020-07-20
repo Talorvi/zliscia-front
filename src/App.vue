@@ -23,7 +23,7 @@ export default {
         moment().isBefore(this.$cookies.get("token-valid-until"))
       ) {
         this.axios
-          .get("http://lisc.test/api/auth/ping", {
+          .get("https://www.lisc.polarlooptheory.pl/api/auth/ping", {
             headers: { Authorization: "Bearer " + this.$cookies.get("token") }
           })
           .catch(() => {

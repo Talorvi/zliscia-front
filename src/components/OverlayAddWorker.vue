@@ -140,7 +140,7 @@ export default {
     addWorker() {
       this.axios
         .post(
-          "http://lisc.test/api/panel/workers/create",
+          "https://www.lisc.polarlooptheory.pl/api/panel/workers/create",
           {
             email: this.email,
             name: this.name,
@@ -183,7 +183,7 @@ export default {
     //       preConfirm: () => {
     //         return this.axios
     //           .post(
-    //             "http://lisc.test/api/panel/cancel-reservation",
+    //             "https://www.lisc.polarlooptheory.pl/api/panel/cancel-reservation",
     //             {
     //               id: id
     //             },

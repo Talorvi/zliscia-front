@@ -11,6 +11,7 @@
             Dodaj rezerwację
           </div>
         </div>
+        <div id="gstc"></div>
         <GSTC :config="config" />
       </div>
     </div>
@@ -222,7 +223,7 @@ export default {
 
       this.axios
         .post(
-          "http://lisc.test/api/panel/get-reservations",
+          "https://www.lisc.polarlooptheory.pl/api/panel/get-reservations",
           {
             date: moment(this.date).format("YYYY-MM-DD")
           },
@@ -237,13 +238,14 @@ export default {
         })
         .catch(error => {
           console.log(error);
+          this.toMainPage();
         });
     },
     // eslint-disable-next-line no-unused-vars
     updateReservations(data) {
       this.axios
         .post(
-          "http://lisc.test/api/panel/get-reservations",
+          "https://www.lisc.polarlooptheory.pl/api/panel/get-reservations",
           {
             date: moment(this.date).format("YYYY-MM-DD")
           },
@@ -258,6 +260,7 @@ export default {
         })
         .catch(error => {
           console.log(error);
+          this.toMainPage();
         });
     },
     itemClicked(item) {
@@ -272,7 +275,7 @@ export default {
         moment().isBefore(this.$cookies.get("token-valid-until"))
       ) {
         this.axios
-          .get("http://lisc.test/api/auth/ping", {
+          .get("https://www.lisc.polarlooptheory.pl/api/auth/ping", {
             headers: { Authorization: "Bearer " + this.$cookies.get("token") }
           })
           .catch(() => {
@@ -289,12 +292,22 @@ export default {
         EventBus.$emit("login-update");
         this.$router.push("/", () => {});
       }
+    },
+    toMainPage() {
+      this.$router.push("/", () => {});
     }
   },
   beforeMount: function() {
     this.checkIfValidToken();
   },
   mounted: function() {
+    // const state = GSTC.api.stateFromConfig(this.config);
+    // // eslint-disable-next-line no-unused-vars
+    // const app = GSTC({
+    //   element: document.getElementById("gstc"),
+    //   state
+    // });
+
     let pusher = new Pusher("8db3260ab25d8ea09e36", {
       cluster: "eu",
       forceTLS: false
@@ -308,7 +321,7 @@ export default {
     this.config.chart.time.zoom = 14;
     this.axios
       .post(
-        "http://lisc.test/api/panel/get-reservations",
+        "https://www.lisc.polarlooptheory.pl/api/panel/get-reservations",
         {
           date: moment(this.date)
             .toDate()
@@ -324,6 +337,7 @@ export default {
       })
       .catch(error => {
         console.log(error);
+        this.toMainPage();
       });
 
     EventBus.$on("reservation-complete", data => {

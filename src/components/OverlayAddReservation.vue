@@ -459,7 +459,7 @@ export default {
 
       this.axios
         .post(
-          "http://lisc.test/api/reservation/reserve",
+          "https://www.lisc.polarlooptheory.pl/api/reservation/reserve",
           {
             time_from: dayFrom,
             duration: this.diff_minutes(this.dateTo, this.dateFrom),
@@ -508,10 +508,13 @@ export default {
       this.loadedRooms = true;
 
       this.axios
-        .post("http://lisc.test/api/reservation/check-table", {
-          time_from: dayFrom,
-          time_to: dayTo
-        })
+        .post(
+          "https://www.lisc.polarlooptheory.pl/api/reservation/check-table",
+          {
+            time_from: dayFrom,
+            time_to: dayTo
+          }
+        )
         .then(response => {
           this.rooms.forEach(room => {
             room.free = true;
@@ -582,10 +585,13 @@ export default {
       this.loadedRooms = true;
 
       this.axios
-        .post("http://lisc.test/api/reservation/check-table", {
-          time_from: dayFrom,
-          time_to: dayTo
-        })
+        .post(
+          "https://www.lisc.polarlooptheory.pl/api/reservation/check-table",
+          {
+            time_from: dayFrom,
+            time_to: dayTo
+          }
+        )
         // eslint-disable-next-line no-unused-vars
         .then(response => {
           // eslint-disable-next-line no-unused-vars
@@ -617,7 +623,7 @@ export default {
 
       this.axios
         .post(
-          "http://lisc.test/api/panel/create-reservation",
+          "https://www.lisc.polarlooptheory.pl/api/panel/create-reservation",
           {
             time_from: dayFrom,
             duration: this.diff_minutes(this.dateTo, this.dateFrom),

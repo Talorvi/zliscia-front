@@ -1438,7 +1438,7 @@ let test = {
       this.loadedFinish = true;
 
       this.axios
-        .post("http://lisc.test/api/reservation/reserve", {
+        .post("https://www.lisc.polarlooptheory.pl/api/reservation/reserve", {
           time_from: dayFrom,
           duration: this.diff_minutes(this.dateTo, this.dateFrom),
           room_name: this.currentTable,
@@ -1485,10 +1485,13 @@ let test = {
       this.loadedRooms = true;
 
       this.axios
-        .post("http://lisc.test/api/reservation/check-table", {
-          time_from: dayFrom,
-          time_to: dayTo
-        })
+        .post(
+          "https://www.lisc.polarlooptheory.pl/api/reservation/check-table",
+          {
+            time_from: dayFrom,
+            time_to: dayTo
+          }
+        )
         .then(response => {
           this.rooms.forEach(room => {
             room.free = true;

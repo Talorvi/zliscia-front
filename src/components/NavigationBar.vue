@@ -88,6 +88,12 @@
             Pracownicy
           </a>
           <a
+            v-if="
+              this.roles !== undefined &&
+                (this.roles.includes('owner') ||
+                  this.roles.includes('webmaster') ||
+                  this.roles.includes('worker'))
+            "
             @click="toPanel"
             class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8 cursor-pointer"
           >
@@ -153,7 +159,7 @@ export default {
     logout() {
       this.$router.push("/", () => {});
       this.$axios
-        .get("http://lisc.test/api/auth/logout", {
+        .get("https://www.lisc.polarlooptheory.pl/api/auth/logout", {
           headers: { Authorization: "Bearer " + this.$cookies.get("token") }
         })
         .then(() => {

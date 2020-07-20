@@ -377,7 +377,7 @@ export default {
       this.message = "Niepoprawny kod weryfikacji.";
     } else {
       this.axios
-        .post("http://lisc.test/api/reservation/confirm", {
+        .post("https://www.lisc.polarlooptheory.pl/api/reservation/confirm", {
           id: this.id,
           code: this.code
         })

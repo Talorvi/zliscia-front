@@ -84,7 +84,10 @@ export default {
   methods: {
     loadWorkers() {
       this.axios
-        .get("http://lisc.test/api/panel/workers/list", this.headerConfig)
+        .get(
+          "https://www.lisc.polarlooptheory.pl/api/panel/workers/list",
+          this.headerConfig
+        )
         .then(response => {
           this.workers = response.data;
           console.log(this.workers);
@@ -97,7 +100,7 @@ export default {
         moment().isBefore(this.$cookies.get("token-valid-until"))
       ) {
         this.axios
-          .get("http://lisc.test/api/auth/ping", {
+          .get("https://www.lisc.polarlooptheory.pl/api/auth/ping", {
             headers: { Authorization: "Bearer " + this.$cookies.get("token") }
           })
           .catch(() => {
@@ -122,7 +125,7 @@ export default {
     disableWorker(id) {
       this.axios
         .post(
-          "http://lisc.test/api/panel/workers/disable",
+          "https://www.lisc.polarlooptheory.pl/api/panel/workers/disable",
           {
             id: id
           },
@@ -143,7 +146,7 @@ export default {
     enableWorker(id) {
       this.axios
         .post(
-          "http://lisc.test/api/panel/workers/enable",
+          "https://www.lisc.polarlooptheory.pl/api/panel/workers/enable",
           {
             id: id
           },
@@ -174,7 +177,7 @@ export default {
           preConfirm: () => {
             return this.axios
               .post(
-                "http://lisc.test/api/panel/workers/remove",
+                "https://www.lisc.polarlooptheory.pl/api/panel/workers/remove",
                 {
                   id: id
                 },

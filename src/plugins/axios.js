@@ -39,6 +39,9 @@ _axios.interceptors.response.use(
   }
 );
 
+_axios.defaults.headers.post["Content-Type"] =
+  "application/x-www-form-urlencoded";
+
 // eslint-disable-next-line no-unused-vars
 Plugin.install = function(Vue, options) {
   Vue.axios = _axios;
