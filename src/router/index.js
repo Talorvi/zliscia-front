@@ -49,6 +49,16 @@ const routes = [
     path: "/pracownicy",
     name: "Workers",
     component: () => import("../views/Workers.vue")
+  },
+  {
+    path: "/posty",
+    name: "Posts",
+    component: () => import("../views/Posts.vue")
+  },
+  {
+    path: "/zarzadzaj-postami",
+    name: "Posts",
+    component: () => import("../views/Posts.vue")
   }
 ];
 

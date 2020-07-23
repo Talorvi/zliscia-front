@@ -28,7 +28,7 @@
               >
                 <path
                   id="Taktyczny"
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   d="M176.6781 312.57027h119.59999v95.60001H176.6781z"
                 ></path>
@@ -49,7 +49,7 @@
               >
                 <path
                   id="Motoryzacyjny"
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   d="M176.6781 218.97033h119.59999v95.60001H176.6781z"
                 ></path>
@@ -66,7 +66,7 @@
               >
                 <path
                   id="Gwiezdny"
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   d="M138.26598 134.76607l72.84141-.0254 85.17244 81.22854-160.08157 2.87293z"
                 ></path>
@@ -86,7 +86,7 @@
               >
                 <path
                   id="Pluszowy"
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   d="M214.17325 137.6575l39.10483-33.58716 3.67702-66.02301-120.65295-.36822 1.96383 97.08696z"
                 ></path>
@@ -103,7 +103,7 @@
               >
                 <path
                   id="Gamingowy"
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   d="M327.19507 159.39106h45.90262l58.11412-6.53574.17632-116.02301-176.58612-.16662.60982 66.18963 51.75003 51.84995z"
                 ></path>
@@ -121,7 +121,7 @@
                 <path
                   id="Steampunkowy"
                   class="svg_green transition duration-500 ease-in-out"
-                  fill="#2F855A"
+                  fill="#239400"
                   d="M548.07807 121.87032l-30.19998 30.76608-85.95002 1.43394.17632-116.02301h119.18008z"
                 ></path>
                 <path
@@ -148,7 +148,7 @@
               >
                 <path
                   id="Muzyczny"
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   d="M553.77808 121.87032l35.13749 34.23828 103.13051-98.95863-.768-26.67964-67.2-2.85586-5.69996 10.25582-67.09365.17704z"
                 ></path>
@@ -165,7 +165,7 @@
               >
                 <path
                   id="Morski"
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   d="M496.89323 158.87032h20.98483s-.49994 46.9.00003 46.40001l-6.19999 54.85-97.99998.05s-41.36609-45.31035-39.7-103.4z"
                 ></path>
@@ -178,7 +178,7 @@
               <path
                 word-spacing="0"
                 style="line-height:1.25;text-align:center"
-                fill="#2F855A"
+                fill="#239400"
                 d="M727.66738 53.96189h10.332v3.76953h-.4296q-.7422 0-.9571.15625-.2734.19531-.2734.52734 0 .29297.1758.83985l2.7343 8.4375 2.3633-6.58203-.625-1.85547q-.2734-.82032-.6836-1.15235-.3906-.33203-1.1718-.37109v-3.76953h9.8242v3.76953h-.8008q-.6641 0-.918.19531t-.2539.56641q0 .35156.2344 1.01562l2.3633 7.01172 2.3828-7.01172q.2344-.68359.2344-1.03515 0-.3711-.293-.54688-.2734-.19531-1.1719-.19531h-.4492v-3.76953h8.7695v3.76953q-.9375 0-1.2304.11719-.293.11718-.5078.37109-.2735.37109-.6055 1.28906l-5.2539 13.94532h-5.1758l-2.9102-7.8711-2.9687 7.8711h-5.2149l-5.1367-13.94532q-.2734-.74218-.664-1.23047-.2344-.33203-.5078-.42968-.254-.0977-1.211-.11719zm51.0156 12.10937l2.8711 2.51953q-2.3047 2.79297-4.7851 4.0625-2.4805 1.26954-5.3125 1.26954-4.5313 0-7.5781-2.94922-3.0274-2.94922-3.0274-7.1875 0-2.8711 1.4063-5.25391 1.4257-2.38281 3.8867-3.71094 2.4804-1.32812 5.8398-1.32812 4.0235 0 6.5625 1.875 2.5586 1.85547 2.5586 3.92578 0 .87891-.4101 1.58203-.3907.68359-1.211 1.11328t-1.7383.42969q-.7422 0-1.3281-.29297-.5859-.29297-.9765-.74219-.1758-.19531-.6836-1.21093-.6446-1.26954-.9961-1.67969-.3516-.41016-.8399-.625-.4883-.23438-1.1133-.23438-1.0156 0-1.9531.66407-.918.64453-1.5234 1.97265-.586 1.32813-.586 2.96875 0 1.79688.7032 3.24219.7031 1.42578 1.875 2.16797 1.1914.74219 2.6172.74219 1.3671 0 2.7539-.74219 1.3867-.74219 2.9882-2.57813z"
                 font-family="Bookman Old Style"
                 font-size="40"
@@ -188,7 +188,7 @@
               ></path>
               <g>
                 <path
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   d="M497.97812 501.07031c.14799-24.71341 5.5076-50.01152 19.6-70.7 11.04883-17.23885 26.01235-31.60845 42.53654-43.55729 24.61011-21.02442 39.61827-51.93715 44.74635-83.58861.98678-6.837 1.32998-13.75097 1.31711-20.6541l206.76586.0502v248.92317H497.97812z"
                 ></path>
@@ -206,7 +206,7 @@
                   d="M677.46106 299.17251c-15.04072 0-27.30862 12.26792-27.30862 27.3086 0 15.04068 12.2679 27.30859 27.30862 27.30859 15.0407 0 27.3086-12.26791 27.3086-27.30859 0-15.04068-12.2679-27.3086-27.3086-27.3086z"
                   overflow="visible"
                   style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1"
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   color="#000"
                   font-family="sans-serif"
@@ -246,7 +246,7 @@
                   d="M766.21886 299.17251c-15.0407 0-27.3086 12.26792-27.3086 27.3086 0 15.04068 12.2679 27.30859 27.3086 27.30859 15.0406 0 27.3086-12.26791 27.3086-27.30859 0-15.04068-12.268-27.3086-27.3086-27.3086z"
                   overflow="visible"
                   style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1"
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   color="#000"
                   font-family="sans-serif"
@@ -290,7 +290,7 @@
                   d="M766.21886 460.3243c-15.0407 0-27.3086 12.26792-27.3086 27.3086 0 15.04068 12.2679 27.30859 27.3086 27.30859s27.3086-12.26791 27.3086-27.30859c0-15.04068-12.2679-27.3086-27.3086-27.3086z"
                   overflow="visible"
                   style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1"
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   color="#000"
                   font-family="sans-serif"
@@ -334,7 +334,7 @@
                   d="M677.46104 460.3243c-15.0407 0-27.3086 12.26792-27.3086 27.3086 0 15.04068 12.2679 27.30859 27.3086 27.30859s27.3086-12.26791 27.3086-27.30859c0-15.04068-12.2679-27.3086-27.3086-27.3086z"
                   overflow="visible"
                   style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1"
-                  fill="#2F855A"
+                  fill="#239400"
                   class="svg_green transition duration-500 ease-in-out"
                   color="#000"
                   font-family="sans-serif"
@@ -371,7 +371,7 @@
               >
                 <path
                   id="5"
-                  fill="#2F855A"
+                  fill="#239400"
                   d="M588.70325 460.3243c-15.0407 0-27.3086 12.26792-27.3086 27.3086 0 15.04068 12.2679 27.30859 27.3086 27.30859s27.3086-12.26791 27.3086-27.30859c0-15.04068-12.2679-27.3086-27.3086-27.3086z"
                   color="#000"
                   class="svg_green transition duration-500 ease-in-out"
@@ -483,7 +483,7 @@
           </div>
           <div
             id="table"
-            class="overflow-x-auto text-gray-700 bg-white rounded sm:w-full md:w-2/5 flex-col md:flex-row flex-no-wrap flex justify-center items-center content-center"
+            class="overflow-x-auto text-gray-700 rounded sm:w-full md:w-2/5 flex-col md:flex-row flex-no-wrap flex justify-center items-center content-center"
           >
             <div
               class="rounded overflow-hidden shadow-lg relative m-4 transition duration-500 ease-in-out w-full"
@@ -508,8 +508,8 @@
                 :src="room.graphics"
                 alt="Sunset in the mountains"
               />
-              <div class="px-4 py-2">
-                <div class="font-bold text-xl mb-2">
+              <div class="px-4 py-2 bg-white">
+                <div class="font-bold text-xl mb-2 bookman">
                   {{ room.name }}
                   <span v-if="!Number.isInteger(parseInt(room.name))">liść</span
                   ><span v-else>stolik</span>
@@ -528,8 +528,8 @@
                 src="https://i.imgur.com/WiR9LWE.jpg"
                 alt="Sunset in the mountains"
               />
-              <div class="px-4 py-2">
-                <div class="font-bold text-xl mb-2">
+              <div class="px-4 py-2 bg-white">
+                <div class="font-bold text-xl mb-2 bookman">
                   Wybierz miejsce
                 </div>
                 <p class="text-gray-700 text-base text-xs">
@@ -560,7 +560,7 @@
             </button>
             <button
               v-else
-              class="inline-block btnanim text-center bookman w-56 text-xl px-4 py-4 leading-none border rounded border-white text-green-700 bg-green-200 ml-auto mr-auto cursor-not-allowed"
+              class="inline-block btnanim text-center bookman w-56 text-xl px-4 py-4 leading-none border rounded border-white text-white bg-green-200 ml-auto mr-auto cursor-not-allowed"
             >
               Dalej
             </button>
@@ -670,7 +670,7 @@
           <div class="w-full flex flex-row">
             <button
               data-v-df212a54=""
-              class="inline-block btnanim text-center bookman w-56 text-xl px-4 py-4 leading-none border rounded border-white text-green-700 bg-green-200 ml-auto mr-auto cursor-not-allowed"
+              class="inline-block btnanim text-center bookman w-56 text-xl px-4 py-4 leading-none border rounded border-white text-white bg-green-200 ml-auto mr-auto cursor-not-allowed"
             >
               Wstecz
             </button>
@@ -685,7 +685,7 @@
             </button>
             <button
               v-else
-              class="inline-block btnanim text-center bookman w-56 text-xl px-4 py-4 leading-none border rounded border-white text-green-700 bg-green-200 ml-auto mr-auto cursor-not-allowed"
+              class="inline-block btnanim text-center bookman w-56 text-xl px-4 py-4 leading-none border rounded border-white text-white bg-green-200 ml-auto mr-auto cursor-not-allowed"
             >
               Dalej
             </button>
@@ -830,7 +830,7 @@
             </button>
             <button
               v-else
-              class="inline-block btnanim text-center bookman w-56 text-xl px-4 py-4 leading-none border rounded border-white text-green-700 bg-green-200 ml-auto mr-auto cursor-not-allowed"
+              class="inline-block btnanim text-center bookman w-56 text-xl px-4 py-4 leading-none border rounded border-white text-white bg-green-200 ml-auto mr-auto cursor-not-allowed"
             >
               Zarezerwuj
             </button>
@@ -840,7 +840,7 @@
           </div>
         </div>
         <div
-          class="max-w-3xl text-gray-700 bg-white px-4 py-2 border-gray-600 ml-auto mr-auto w-full"
+          class="max-w-3xl text-gray-700 bg-white px-4 py-2 border-gray-600 ml-auto mr-auto w-full shadow-lg"
           v-if="component === 'Finish'"
         >
           <div>
@@ -1405,7 +1405,7 @@ let test = {
         element = document.getElementById(tableName);
         if (!element.classList.contains("text-teal-900")) {
           element.classList.add("fill-current");
-          element.classList.add("text-green-400");
+          element.classList.add("text-green-300");
         }
         this.currentTable = tableName;
       } catch (e) {

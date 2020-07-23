@@ -6,12 +6,12 @@ import store from "./store";
 import "./assets/tailwind.css";
 import VCalendar from "v-calendar";
 import VueCookies from "vue-cookies";
-import Paginate from "vuejs-paginate";
+import VueTailwind from "vue-tailwind";
 
 Vue.config.productionTip = false;
 Vue.use(VCalendar);
 Vue.use(VueCookies);
-Vue.component("paginate", Paginate);
+Vue.use(VueTailwind);
 
 let vm = new Vue({
   router,

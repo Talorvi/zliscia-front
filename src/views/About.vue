@@ -5,7 +5,9 @@
       style="margin-bottom: -65px; padding-bottom: 65px; min-height: 100vh"
     >
       <div class="pl-4 pr-4 xl:pl-64 xl:pr-64 pt-8 pb-4">
-        <h1 class="text-3xl mb-4 ml-10 uppercase">Polityka prywatności</h1>
+        <h1 class="text-3xl mb-4 ml-10 uppercase bookman">
+          Polityka prywatności
+        </h1>
       </div>
       <div
         class="pl-4 pr-4 xl:pl-64 xl:pr-64 pb-8 grid grid-cols-1 ml-auto mr-auto gap-8"
@@ -15,7 +17,7 @@
         >
           <div>
             <div class="xl:px-6 py-4">
-              <div class="font-bold text-xl mb-4">
+              <div class="font-bold text-xl mb-4 bookman">
                 Polityka prywatności serwisu www.zliscia.com
               </div>
               <p class="text-justify pb-4">
@@ -84,7 +86,7 @@
         >
           <div>
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-4">
+              <div class="font-bold text-xl mb-4 bookman">
                 Monitoring wizyjny
               </div>
               <p class="text-justify pb-4">

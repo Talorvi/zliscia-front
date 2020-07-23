@@ -5,14 +5,14 @@
       style="margin-bottom: -65px; padding-bottom: 65px; min-height: 100vh"
     >
       <div class="pl-4 pr-4 xl:pl-64 xl:pr-64 pt-8 pb-4">
-        <h1 class="text-3xl mb-4 ml-10 uppercase">Kontakt</h1>
+        <h1 class="text-3xl mb-4 uppercase bookman">Kontakt</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-8 row-gap-4">
           <div
             class="text-gray-700 bg-white px-4 py-2 border-gray-600 shadow-xl rounded row-span-1"
           >
             <div class="flex flex-col h-full">
               <div class="px-6 py-4 flex-1 text-center">
-                <div class="font-bold text-xl mb-4">
+                <div class="font-bold text-xl mb-4 bookman">
                   Godziny otwarcia
                 </div>
                 <p class="xl:text-lg">
@@ -53,7 +53,7 @@
           >
             <div class="flex flex-col h-full w-full">
               <div class="px-6 py-4 flex-1 text-center">
-                <div class="font-bold text-xl mb-4">
+                <div class="font-bold text-xl mb-4 bookman">
                   Kontakt
                 </div>
                 <p class="xl:text-lg">
@@ -67,7 +67,7 @@
           </div>
         </div>
         <h1
-          class="text-2xl text-center font-semibold mb-12 mt-12 ml-10 mt-8 uppercase"
+          class="text-2xl text-center font-semibold mb-12 mt-12 ml-10 mt-8 uppercase bookman"
         >
           Skontaktuj się z nami
         </h1>

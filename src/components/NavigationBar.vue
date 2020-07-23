@@ -10,13 +10,13 @@
         @click="toMainPage"
       >
         <span class="font-semibold text-xl tracking-tight">
-          <img src="../assets/logov2.png" class="h-10" />
+          <img src="../assets/mini-logo.svg" class="h-10" />
         </span>
-        <span class="font-semibold text-xl tracking-tight ml-4">
-          Z LIŚCIA
-        </span>
+        <!--        <span class="font-semibold text-xl tracking-tight ml-4">-->
+        <!--          Z LIŚCIA-->
+        <!--        </span>-->
       </div>
-      <div class="block lg:hidden">
+      <div class="block xl:hidden">
         <button
           class="flex items-center px-3 py-2 border rounded text-green-100 border-green-200 hover:text-white hover:border-white"
           @click="toggle"
@@ -34,13 +34,13 @@
       <div
         v-if="!loggedIn"
         id="nav-content"
-        class="w-full block flex-grow xl:flex xl:items-center xl:w-auto xl:mr-64 uppercase lg:block"
+        class="block flex-grow xl:flex xl:items-center xl:w-auto xl:mr-64 uppercase xl:block w-full"
         v-bind:class="{ hidden: isHidden }"
       >
-        <div class="lg:flex-grow lg:text-right">
+        <div class="xl:flex-grow xl:text-right">
           <a
             @click="toReservation"
-            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8 cursor-pointer"
+            class="block mt-4 xl:inline-block xl:mt-0 text-green-100 hover:text-black xl:mr-8 text-center cursor-pointer"
           >
             Rezerwacja
           </a>
@@ -50,21 +50,21 @@
           <!--          >-->
           <!--            Galeria-->
           <!--          </a>-->
-          <!--          <a-->
-          <!--            href="#responsive-header"-->
-          <!--            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8"-->
-          <!--          >-->
-          <!--            Aktualności-->
-          <!--          </a>-->
+          <a
+            @click="toNews"
+            class="block mt-4 xl:inline-block xl:mt-0 text-green-100 hover:text-black xl:mr-8 text-center cursor-pointer"
+          >
+            Aktualności
+          </a>
           <a
             @click="toContact"
-            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8 cursor-pointer"
+            class="block mt-4 xl:inline-block xl:mt-0 text-green-100 hover:text-black xl:mr-8 text-center cursor-pointer"
           >
             Kontakt
           </a>
           <a
             @click="toLogin"
-            class="inline-block cursor-pointer text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-700 hover:bg-white mt-4 lg:mt-0"
+            class="inline-block ml-auto mr-auto w-full xl:w-auto cursor-pointer text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-700 hover:bg-white mt-4 xl:mt-0 xl:mr-8 text-center "
             >Logowanie</a
           >
         </div>
@@ -76,6 +76,17 @@
         v-bind:class="{ hidden: isHidden }"
       >
         <div class="lg:flex-grow lg:text-right">
+          <a
+            v-if="
+              this.roles !== undefined &&
+                (this.roles.includes('owner') ||
+                  this.roles.includes('webmaster'))
+            "
+            @click="toNewsEdit"
+            class="block mt-4 lg:inline-block lg:mt-0 text-green-100 hover:text-black mr-8 cursor-pointer"
+          >
+            Aktualności
+          </a>
           <a
             v-if="
               this.roles !== undefined &&
@@ -156,6 +167,14 @@ export default {
       this.$router.push("/kalendarz", () => {});
       this.isHidden = true;
     },
+    toNews() {
+      this.$router.push("/posty", () => {});
+      this.isHidden = true;
+    },
+    toNewsEdit() {
+      this.$router.push("/zarzadzaj-postami", () => {});
+      this.isHidden = true;
+    },
     logout() {
       this.$router.push("/", () => {});
       this.$axios
@@ -181,9 +200,15 @@ export default {
   },
   mounted() {
     this.loggedIn = this.$cookies.isKey("token");
+    if (this.loggedIn) {
+      this.roles = this.$cookies.get("roles").split(",");
+    } else {
+      this.roles = undefined;
+    }
+
     EventBus.$on("login-update", () => {
       this.loggedIn = this.$cookies.isKey("token");
-
+      console.log(this.loggedIn);
       if (this.loggedIn) {
         this.roles = this.$cookies.get("roles").split(",");
       } else {
@@ -191,16 +216,16 @@ export default {
       }
     });
 
-    var prevScrollpos = window.pageYOffset;
-    window.onscroll = function() {
-      var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        document.getElementById("navbar").style.top = "0";
-      } else {
-        document.getElementById("navbar").style.top = "-100px";
-      }
-      prevScrollpos = currentScrollPos;
-    };
+    // var prevScrollpos = window.pageYOffset;
+    // window.onscroll = function() {
+    //   var currentScrollPos = window.pageYOffset;
+    //   if (prevScrollpos > currentScrollPos) {
+    //     document.getElementById("navbar").style.top = "0";
+    //   } else {
+    //     document.getElementById("navbar").style.top = "-100px";
+    //   }
+    //   prevScrollpos = currentScrollPos;
+    // };
   }
 };
 </script>

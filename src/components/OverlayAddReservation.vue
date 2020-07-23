@@ -5,7 +5,7 @@
     class="flex flex-row justify-center content-center items-center text-xs md:text-base"
   >
     <div
-      class="text-gray-700 bg-white px-4 py-2 border-gray-600 shadow-2xl rounded max-w-xl max-h-screen w-full"
+      class="text-gray-700 bg-white px-4 py-2 border-gray-600 shadow-2xl rounded max-w-xl max-h-screen w-full overflow-auto"
     >
       <div class="flex flex-col h-full">
         <div class="px-6 py-4 flex-1 mb-4">

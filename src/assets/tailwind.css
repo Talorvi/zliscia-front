@@ -4,8 +4,22 @@
 
 @tailwind utilities;
 
-.bookman{
-    font-family: 'Bookman Old Style', arial;
+@font-face {
+    font-family: 'Book';
+    src: url('BOOKOS.TTF')  format('truetype'); /* Safari, Android, iOS */
+}
+
+/*.bookman{*/
+/*    font-family: 'Bookman Old Style', arial;*/
+/*}*/
+
+body {
+    font-family: Arial;
+    background-color: #FFFAFA;
+}
+
+.bookman {
+    font-family: Book, serif;
 }
 
 .h-half {
@@ -19,6 +33,30 @@
 .text-shadow-white {
     /*text-shadow: 1px 1px rgba(255, 255, 255, 0.5);*/
     /*filter: blur(3px);*/
+}
+
+.text-green-700 {
+    color: #239400;
+}
+
+.text-green-600 {
+    color: #239400;
+}
+
+.text-green-500 {
+    color: #239400;
+}
+
+.text-green-400 {
+    color: #239400;
+}
+
+.bg-green-700 {
+    background-color: #8e7254;
+}
+
+.bg-green-200 {
+    background-color: #a79c97;
 }
 
 /*!* width *!*/
