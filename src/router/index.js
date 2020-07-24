@@ -57,8 +57,13 @@ const routes = [
   },
   {
     path: "/zarzadzaj-postami",
-    name: "Posts",
+    name: "PostsManagement",
     component: () => import("../views/PostManagement.vue")
+  },
+  {
+    path: "/escape-room",
+    name: "EscapeRoom",
+    component: () => import("../views/EscapeRoom.vue")
   }
 ];
 

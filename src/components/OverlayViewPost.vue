@@ -16,8 +16,7 @@
       <img
         v-else
         class="w-full h-48 lg:h-64 object-cover rounded-t"
-        src="http://localhost:8080/default.jpg"
-        alt="Sunset in the mountains"
+        src="https://lisc.polarlooptheory.pl/default.jpg"
       />
       <div class="flex flex-col h-full px-4 py-2">
         <div class="px-3 py-3 flex-1 mb-4">

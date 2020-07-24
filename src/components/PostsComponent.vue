@@ -67,8 +67,7 @@
           <img
             v-else
             class="w-full h-48 lg:h-64 object-cover"
-            src="http://localhost:8080/default.jpg"
-            alt="Sunset in the mountains"
+            src="https://lisc.polarlooptheory.pl/default.jpg"
           />
           <div class="px-4 py-2 flex-1">
             <div class="font-bold text-xl mb-2 bookman">
@@ -76,18 +75,18 @@
             </div>
             <p
               v-html="post.text.replace(/^(.{250}[^\s]*).*/, '$1')"
-              class="text-gray-700 text-base text-xs"
+              class="text-gray-700 text-base text-xs inline-block"
+            ></p>
+            <span v-if="post.text.length > 250" class="inline-block"
+              >[...]</span
             >
-              <span v-if="post.text.length > 250">[...]</span>
-            </p>
           </div>
           <div class="px-6 py-4 flex flex-row">
             <div class="mb-2 flex-1 text-xs">
               {{ post.created_at }}
             </div>
             <a
-              href="#"
-              class="text-lg bookman text-right font-semibold leading-none text-green-600 hover:text-green-400 flex-1"
+              class="text-lg bookman text-right font-semibold leading-none text-green-600 hover:text-green-400 flex-1 cursor-pointer"
               @click="postClicked(post)"
               >Czytaj dalej</a
             >
@@ -101,6 +100,16 @@
       controlButtonClass="text-green-500 hover:text-green-700 hover:bg-gray-200"
       activeButtonClass="bg-green-500 text-white"
       inactiveButtonClass="text-green-500 hover:text-green-700 hover:bg-gray-200"
+      wrapperClass="table border-collapse"
+      itemClass="table-cell"
+      pageClass="border border-gray-300 w-12 h-12"
+      controlClass="border border-gray-300 w-12 h-12"
+      disabledControlClass="border border-gray-300 w-12 h-12"
+      ellipsisClass="border border-gray-300 w-12 h-12 hidden md:table-cell"
+      buttonClass="flex w-full h-full items-center justify-center font-bold bg-white"
+      ellipsisButtonClass="text-gray-600"
+      disabledButtonClass="text-gray-400 cursor-not-allowed"
+      disabledControlButtonClass="text-gray-400 cursor-not-allowed"
       :total-items="total"
       :per-page="perPage"
       :limit="7"

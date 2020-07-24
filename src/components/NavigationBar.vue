@@ -37,12 +37,18 @@
         class="block flex-grow xl:flex xl:items-center xl:w-auto xl:mr-64 uppercase xl:block w-full"
         v-bind:class="{ hidden: isHidden }"
       >
-        <div class="xl:flex-grow xl:text-right">
+        <div class="xl:flex-grow xl:text-right text-sm">
           <a
             @click="toReservation"
             class="block mt-4 xl:inline-block xl:mt-0 text-green-100 hover:text-black xl:mr-8 text-center cursor-pointer"
           >
-            Rezerwacja
+            Zarezerwuj stolik
+          </a>
+          <a
+            @click="toEscaperoom"
+            class="block mt-4 xl:inline-block xl:mt-0 text-green-100 hover:text-black xl:mr-8 text-center cursor-pointer"
+          >
+            Escape room
           </a>
           <!--          <a-->
           <!--            href="#responsive-header"-->
@@ -173,6 +179,10 @@ export default {
     },
     toNewsEdit() {
       this.$router.push("/zarzadzaj-postami", () => {});
+      this.isHidden = true;
+    },
+    toEscaperoom() {
+      this.$router.push("/escape-room", () => {});
       this.isHidden = true;
     },
     logout() {
