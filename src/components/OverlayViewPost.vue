@@ -33,9 +33,7 @@
             </div>
           </div>
           <div class="flex flex-row text-sm">
-            <p>
-              {{ item.text }}
-            </p>
+            <p v-html="item.text"></p>
           </div>
           <div class="mb-2 flex-1 text-xs pt-4">
             {{ item.created_at }}

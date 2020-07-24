@@ -7,45 +7,37 @@
       <div
         class="pl-4 pr-4 xl:pl-64 xl:pr-64 pb-8 grid grid-cols-1 ml-auto mr-auto gap-8 mt-8"
       >
-        <div class="max-w-4xl w-full text-gray-700 bg-white ml-auto mr-auto">
+        <div class="max-w-4xl w-full text-gray-700 ml-auto mr-auto">
           <div
-            class="flex flex-row justify-end text-green-700 font-semibold hover:text-green-400 cursor-pointer mb-4"
-            @click="addWorker"
+            class="text-green-700 font-semibold hover:text-green-400 cursor-pointer mb-4 text-right"
+            @click="addPost"
           >
-            Dodaj pracownika
+            Dodaj post
           </div>
-          <div class="overflow-x-auto border-gray-600 shadow-md">
-            <table class="w-full">
+          <div class="overflow-x-auto border-gray-600 shadow-md bg-white">
+            <table class="w-full overflow-hidden">
               <thead>
                 <tr>
-                  <th class="px-4 py-2">Użytkownik</th>
-                  <th class="px-4 py-2">Email</th>
+                  <th class="px-4 py-2">Tytuł</th>
+                  <th class="px-4 py-2">Data utworzenia</th>
                   <th class="px-4 py-2">Akcje</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="worker in workers" :key="worker.email">
-                  <td class="border px-4 py-2">{{ worker.name }}</td>
-                  <td class="border px-4 py-2">{{ worker.email }}</td>
+                <tr v-for="post in posts" :key="post.id">
+                  <td class="border px-4 py-2">{{ post.title }}</td>
+                  <td class="border px-4 py-2">{{ post.created_at }}</td>
                   <td class="border px-4 py-2 text-md">
                     <div class="flex flex-row justify-around">
                       <button
-                        v-if="worker.disabled === '0'"
                         class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-2 rounded w-32"
-                        @click="disableWorker(worker.id)"
+                        @click="editPost(post)"
                       >
-                        Zablokuj
-                      </button>
-                      <button
-                        v-else
-                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded w-32"
-                        @click="enableWorker(worker.id)"
-                      >
-                        Odblokuj
+                        Edytuj
                       </button>
                       <button
                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded w-32 ml-2 md:ml-0"
-                        @click="removeWorker(worker.id)"
+                        @click="removePost(post.id)"
                       >
                         Usuń
                       </button>
@@ -58,7 +50,7 @@
         </div>
       </div>
     </div>
-    <OverlayAddWorker></OverlayAddWorker>
+    <OverlayAddPost></OverlayAddPost>
     <Footer></Footer>
   </div>
 </template>
@@ -68,29 +60,33 @@ import Footer from "../components/Footer";
 import Swal from "sweetalert2";
 import moment from "moment";
 import { EventBus } from "../components/EventBus";
-import OverlayAddWorker from "../components/OverlayAddWorker";
+import OverlayAddPost from "../components/OverlayAddPost";
 
 export default {
-  name: "Login",
-  components: { Footer, OverlayAddWorker },
+  name: "PostManagement",
+  components: { Footer, OverlayAddPost },
   data() {
     return {
-      workers: undefined,
+      posts: undefined,
       headerConfig: {
         headers: { Authorization: "Bearer " + this.$cookies.get("token") }
       }
     };
   },
   methods: {
-    loadWorkers() {
+    loadPosts() {
       this.axios
         .get(
-          "https://www.lisc.polarlooptheory.pl/api/panel/workers/list",
+          "https://www.lisc.polarlooptheory.pl/api/posts/list?main=all",
           this.headerConfig
         )
         .then(response => {
-          this.workers = response.data;
-          console.log(this.workers);
+          this.posts = response.data;
+          this.posts.forEach(post => {
+            var a = moment(post.created_at).locale("pl");
+            var b = moment();
+            post.created_at = a.from(b);
+          });
         })
         .catch(error => console.log(error));
     },
@@ -119,55 +115,16 @@ export default {
       }
     },
     // eslint-disable-next-line no-unused-vars
-    addWorker() {
-      EventBus.$emit("show-add-worker");
+    addPost() {
+      EventBus.$emit("show-add-post");
     },
-    disableWorker(id) {
-      this.axios
-        .post(
-          "https://www.lisc.polarlooptheory.pl/api/panel/workers/disable",
-          {
-            id: id
-          },
-          this.headerConfig
-        )
-        .then(() => {
-          for (let i = 0; i < this.workers.length; i++) {
-            if (this.workers[i].id === id) {
-              this.workers[i].disabled = "1";
-              break;
-            }
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    editPost(post) {
+      EventBus.$emit("show-add-post", post);
     },
-    enableWorker(id) {
-      this.axios
-        .post(
-          "https://www.lisc.polarlooptheory.pl/api/panel/workers/enable",
-          {
-            id: id
-          },
-          this.headerConfig
-        )
-        .then(() => {
-          for (let i = 0; i < this.workers.length; i++) {
-            if (this.workers[i].id === id) {
-              this.workers[i].disabled = "0";
-              break;
-            }
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    removeWorker(id) {
+    removePost(id) {
       Swal.queue([
         {
-          text: "Czy na pewno chcesz usunąć pracownika?",
+          text: "Czy na pewno chcesz usunąć post?",
           icon: "question",
           confirmButtonText: "Tak",
           cancelButtonText: "Anuluj",
@@ -177,16 +134,16 @@ export default {
           preConfirm: () => {
             return this.axios
               .post(
-                "https://www.lisc.polarlooptheory.pl/api/panel/workers/remove",
+                "https://www.lisc.polarlooptheory.pl/api/panel/posts/remove",
                 {
                   id: id
                 },
                 this.headerConfig
               )
               .then(() => {
-                for (let i = 0; i < this.workers.length; i++) {
-                  if (this.workers[i].id === id) {
-                    this.$delete(this.workers, i);
+                for (let i = 0; i < this.posts.length; i++) {
+                  if (this.posts[i].id === id) {
+                    this.$delete(this.posts, i);
                     break;
                   }
                 }
@@ -200,10 +157,10 @@ export default {
     }
   },
   mounted() {
-    this.loadWorkers();
+    this.loadPosts();
 
-    EventBus.$on("update-workers", () => {
-      this.loadWorkers();
+    EventBus.$on("update-posts", () => {
+      this.loadPosts();
     });
   },
   beforeMount() {

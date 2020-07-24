@@ -5,13 +5,14 @@
     class="flex flex-row justify-center content-center items-center text-xs md:text-base"
   >
     <div
-      class="text-gray-700 bg-white px-4 py-2 border-gray-600 shadow-2xl rounded max-w-xl max-h-screen w-full bg-white"
+      class="text-gray-700 bg-white px-4 py-2 border-gray-600 shadow-2xl rounded max-w-xl max-h-screen w-full overflow-auto"
     >
       <div class="flex flex-col h-full">
         <div class="px-6 py-4 flex-1 mb-4">
           <div class="flex flex-row mb-4 items-center">
             <div class="flex-1 text-2xl font-semibold">
-              Dodaj pracownika
+              <span v-if="post">Edytuj post</span>
+              <span v-else>Dodaj post</span>
             </div>
             <div
               class="p-2 cursor-pointer hover:font-bold text-green-700"
@@ -22,78 +23,72 @@
           </div>
           <div class="flex flex-col max-w-xs mx-auto">
             <p class="pb-2">
-              <label for="name" class="font-light">Nazwa:</label>
+              <label for="title" class="font-light">Tytuł:</label>
               <input
-                id="name"
-                v-model="name"
+                id="title"
+                v-model="title"
                 class="bg-white focus:outline-none border border-gray-400 focus:border-green-600 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
                 type="text"
                 placeholder="Nazwa"
                 :disabled="disabled"
               />
               <label
-                for="name"
+                for="title"
                 class="font-light text-red-500 text-xs"
-                v-if="errors.name"
-                >{{ errors.name[0] }}</label
+                v-if="errors.title"
+                >{{ errors.title[0] }}</label
               >
             </p>
             <p class="pb-2">
-              <label for="email" class="font-light">Email:</label>
+              <label for="cover" class="font-light">Zdjęcie:</label>
               <input
-                id="email"
-                v-model="email"
+                id="cover"
+                v-model="cover"
                 class="bg-white focus:outline-none border border-gray-400 focus:border-green-600 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-                type="email"
-                placeholder="Email"
-                :disabled="disabled"
+                type="text"
+                placeholder="Zdjęcie"
               />
               <label
-                for="email"
+                for="cover"
                 class="font-light text-red-500 text-xs"
-                v-if="errors.email"
-                >{{ errors.email[0] }}</label
+                v-if="errors.cover"
+                >{{ errors.cover[0] }}</label
               >
             </p>
             <p class="pb-2">
-              <label for="password" class="font-light">Hasło:</label>
-              <input
-                id="password"
-                v-model="password"
-                class="bg-white focus:outline-none border border-gray-400 focus:border-green-600 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-                type="password"
-                placeholder="Hasło"
-                :disabled="disabled"
-              />
+              <label for="text" class="font-light">Tekst:</label>
+              <vue-editor
+                id="text"
+                v-model="text"
+                :editorToolbar="customToolbar"
+              ></vue-editor>
+              <!--              <textarea-->
+              <!--                rows="10"-->
+              <!--                id="text"-->
+              <!--                v-model="text"-->
+              <!--                class="bg-white focus:outline-none border border-gray-400 focus:border-green-600 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"-->
+              <!--                type="text"-->
+              <!--                placeholder="Teskt"-->
+              <!--                :disabled="disabled"-->
+              <!--              />-->
               <label
-                for="password"
+                for="text"
                 class="font-light text-red-500 text-xs"
-                v-if="errors.password"
-                >{{ errors.password[0] }}</label
-              >
-            </p>
-            <p class="pb-2">
-              <label for="password_confirmation" class="font-light"
-                >Powtórz hasło:</label
-              >
-              <input
-                id="password_confirmation"
-                v-model="password_confirmation"
-                class="bg-white focus:outline-none border border-gray-400 focus:border-green-600 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-                type="password"
-                placeholder="Powtórz hasło"
-                :disabled="disabled"
-              />
-              <label
-                for="password_confirmation"
-                class="font-light text-red-500 text-xs"
-                v-if="errors.password_confirmation"
-                >{{ errors.password_confirmation[0] }}</label
+                v-if="errors.text"
+                >{{ errors.text[0] }}</label
               >
             </p>
             <div
+              v-if="post"
               class="flex flex-row justify-end text-green-700 font-semibold hover:text-green-400 cursor-pointer mt-4"
-              @click="addWorker"
+              @click="editPost"
+            >
+              Zapisz
+            </div>
+            <div
+              v-else
+              class="flex flex-row justify-end text-green-700 font-semibold hover:text-green-400 cursor-pointer mt-4"
+              @click="addPost"
             >
               Dodaj
             </div>
@@ -106,11 +101,19 @@
 
 <script>
 import { EventBus } from "./EventBus";
+import { VueEditor } from "vue2-editor";
 
 export default {
   name: "Overlay",
+  components: { VueEditor },
   mounted() {
-    EventBus.$on("show-add-worker", () => {
+    EventBus.$on("show-add-post", post => {
+      if (post) {
+        this.post = post;
+        this.title = this.post.title;
+        this.text = this.post.text;
+        this.cover = this.post.cover;
+      }
       this.show = true;
     });
   },
@@ -120,50 +123,82 @@ export default {
       headerConfig: {
         headers: { Authorization: "Bearer " + this.$cookies.get("token") }
       },
-      email: "",
-      password: "",
-      password_confirmation: "",
-      name: "",
+      title: "",
+      cover: "",
+      text: "",
       errors: {
-        email: "",
-        password: "",
-        password_confirmation: "",
-        name: ""
+        title: "",
+        text: "",
+        cover: ""
       },
-      disabled: false
+      disabled: false,
+      post: undefined,
+      customToolbar: [
+        ["bold", "italic", "underline"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        ["code-block"]
+      ]
     };
   },
   methods: {
     close() {
       this.show = false;
+      this.post = undefined;
     },
-    addWorker() {
+    addPost() {
       this.axios
         .post(
-          "https://www.lisc.polarlooptheory.pl/api/panel/workers/create",
+          "https://www.lisc.polarlooptheory.pl/api/panel/posts/create",
           {
-            email: this.email,
-            name: this.name,
-            password: this.password,
-            password_confirmation: this.password_confirmation
+            title: this.title,
+            text: this.text,
+            cover: this.cover
           },
           this.headerConfig
         )
         .then(() => {
           this.errors = {
-            email: "",
-            password: "",
-            password_confirmation: "",
-            name: ""
+            title: "",
+            text: "",
+            cover: ""
           };
-          this.email = "";
-          this.password = "";
-          this.password_confirmation = "";
-          this.name = "";
+          this.title = "";
+          this.text = "";
+          this.cover = "";
 
           this.show = false;
 
-          EventBus.$emit("update-workers");
+          EventBus.$emit("update-posts");
+        })
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        });
+    },
+    editPost() {
+      this.axios
+        .post(
+          "https://www.lisc.polarlooptheory.pl/api/panel/posts/edit",
+          {
+            id: this.post.id,
+            title: this.title,
+            text: this.text,
+            cover: this.cover
+          },
+          this.headerConfig
+        )
+        .then(() => {
+          this.errors = {
+            title: "",
+            text: "",
+            cover: ""
+          };
+          this.title = "";
+          this.text = "";
+          this.cover = "";
+
+          this.show = false;
+
+          EventBus.$emit("update-posts");
         })
         .catch(error => {
           this.errors = error.response.data.errors;

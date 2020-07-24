@@ -7,15 +7,15 @@
       <div
         class="pl-4 pr-4 xl:pl-64 xl:pr-64 pb-8 grid grid-cols-1 ml-auto mr-auto gap-8 mt-8"
       >
-        <div class="max-w-4xl w-full text-gray-700 bg-white ml-auto mr-auto">
+        <div class="max-w-4xl w-full text-gray-700 ml-auto mr-auto">
           <div
             class="flex flex-row justify-end text-green-700 font-semibold hover:text-green-400 cursor-pointer mb-4"
             @click="addWorker"
           >
             Dodaj pracownika
           </div>
-          <div class="overflow-x-auto border-gray-600 shadow-md">
-            <table class="w-full">
+          <div class="overflow-x-auto border-gray-600 shadow-md bg-white">
+            <table class="w-full overflow-hidden">
               <thead>
                 <tr>
                   <th class="px-4 py-2">Użytkownik</th>
@@ -90,7 +90,6 @@ export default {
         )
         .then(response => {
           this.workers = response.data;
-          console.log(this.workers);
         })
         .catch(error => console.log(error));
     },

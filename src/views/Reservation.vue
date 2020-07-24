@@ -504,7 +504,7 @@
                 <span class="font-bold text-5xl">Zajęty</span>
               </div>
               <img
-                class="w-full h-48 object-cover"
+                class="w-full h-48 lg:h-64 object-cover"
                 :src="room.graphics"
                 alt="Sunset in the mountains"
               />
@@ -524,7 +524,7 @@
               class="rounded overflow-hidden shadow-lg relative m-4 transition duration-500 ease-in-out w-full"
             >
               <img
-                class="w-full h-48 object-cover"
+                class="w-full h-48 lg:h-64 object-cover"
                 src="https://i.imgur.com/WiR9LWE.jpg"
                 alt="Sunset in the mountains"
               />
@@ -570,19 +570,22 @@
           </div>
         </div>
         <div
-          class="max-w-3xl text-gray-700 bg-white px-4 py-2 border-gray-600 shadow-lg rounded ml-auto mr-auto w-full"
+          class="max-w-xl text-gray-700 bg-white px-4 py-2 border-gray-600 shadow-lg rounded ml-auto mr-auto w-full"
           v-if="component === 'Date'"
         >
           <div>
             <div class="xl:px-6 py-4">
-              <div id="date">
+              <div id="date" class="text-center">
+                <span class="bookman text-center text-xl font-bold"
+                  >Wybierz datę</span
+                >
                 <v-date-picker
                   color="green"
                   is-inline
                   v-model="date"
                   :min-date="new Date()"
                   :max-date="Date.now() + 6.04e8 * 2"
-                  class="ml-auto mr-auto"
+                  class="ml-auto mr-auto mt-4"
                   @input="test"
                   is-required
                 >
@@ -812,7 +815,7 @@
             </button>
             <button
               v-else
-              class="inline-block btnanim text-center bookman w-56 text-xl px-4 py-4 leading-none border rounded border-white text-green-700 bg-green-200 ml-auto mr-auto cursor-not-allowed"
+              class="inline-block btnanim text-center bookman w-56 text-xl px-4 py-4 leading-none border rounded border-white text-white bg-green-200 ml-auto mr-auto cursor-not-allowed"
             >
               Wstecz
             </button>
@@ -852,7 +855,7 @@
                   id="svg8"
                   version="1.1"
                   viewBox="0 0 77.607933 148.53207"
-                  class="fill-current text-green-700 w-16"
+                  class="fill-current text-green-500 w-16"
                 >
                   <defs id="defs2">
                     <clipPath id="clipPath18" clipPathUnits="userSpaceOnUse">

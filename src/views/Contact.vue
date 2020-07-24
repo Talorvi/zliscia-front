@@ -72,7 +72,7 @@
           Skontaktuj się z nami
         </h1>
         <div
-          class="text-gray-700 bg-white px-4 py-2 border-gray-600 shadow-xl rounded row-span-1 max-w-4xl ml-auto mr-auto mb-8"
+          class="text-gray-700 bg-white px-4 py-2 border-gray-600 shadow-xl rounded row-span-1 max-w-2xl ml-auto mr-auto mb-8"
         >
           <div class="flex flex-col h-full">
             <div class="px-6 py-4 flex-1">
@@ -197,7 +197,7 @@
                   >{{ errors.server }}</label
                 >
               </p>
-              <div class="font-light pt-4 text-center w-full">
+              <div class="font-light pt-4 text-center w-full text-sm">
                 Wypełnienie formularza oznacza, że podane w nim dane osobowe
                 będą przetwarzane w celu nawiązania kontaktu i przedstawienia
                 oferty. Zasady przetwarzania i informacje o administratorze

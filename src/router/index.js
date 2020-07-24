@@ -58,7 +58,7 @@ const routes = [
   {
     path: "/zarzadzaj-postami",
     name: "Posts",
-    component: () => import("../views/Posts.vue")
+    component: () => import("../views/PostManagement.vue")
   }
 ];
 
